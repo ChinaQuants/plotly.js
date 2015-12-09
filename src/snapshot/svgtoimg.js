@@ -22,6 +22,8 @@ function svgToImg(opts) {
     var format = opts.format || 'png';
     var canvas = opts.canvas;
 
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" idth="720" height="120"><circle cx="40" cy="60" r="10"></circle></svg>';
+
     var ctx = canvas.getContext('2d');
     var img = new Image();
     var DOMURL = window.URL || window.webkitURL;
@@ -59,6 +61,7 @@ function svgToImg(opts) {
 
     img.onerror = function(err) {
         DOMURL.revokeObjectURL(url);
+        console.log(err);
         return ev.emit('error', err);
     };
 
